@@ -829,7 +829,7 @@
     </datasource>
   </datasources>
   <worksheets>
-    <worksheet name='Sheet 1'>
+    <worksheet name='Bar Chart'>
       <layout-options>
         <title>
           <formatted-text>
@@ -903,7 +903,7 @@
     </worksheet>
   </worksheets>
   <windows saved-dpi-scale-factor='1.25' source-height='37'>
-    <window class='worksheet' maximized='true' name='Sheet 1'>
+    <window class='worksheet' maximized='true' name='Bar Chart'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -936,7 +936,7 @@
     </window>
   </windows>
   <thumbnails>
-    <thumbnail height='192' name='Sheet 1' width='192'>
+    <thumbnail height='192' name='Bar Chart' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
       AAAgAElEQVR4nO3dd3AcV2Ln8W+HyYOcMwEQYCYYJBESKZHKWVrtrlbe4HW8PdtXdtX5j7s6
       3/1xVy77an3ZPoddx3OQpfUGhdUqUCQlihTFHMAEEkQgchhMjh3e/TEkSK4okRQJAmC/TxUL
