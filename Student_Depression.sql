@@ -14,3 +14,9 @@ where gender = 'male'
 
 select gender, count(*) from dbo.[Depression+Student+Dataset]
 group by gender
+
+select * from dbo.[Depression+Student+Dataset]
+where gender = ' '
+
+select * from dbo.[Depression+Student+Dataset]
+where gender is null
