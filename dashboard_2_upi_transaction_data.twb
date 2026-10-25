@@ -3,17 +3,22 @@
 <!-- build 20263.26.1015.1742                               -->
 <workbook _.fcp.WorkbookFingerprinting.true...author-id='3348728f91f5a4478abc02f3daa872a44946612076a899ded93ed112d4c57c43' _.fcp.WorkbookFingerprinting.true...creator-author-id='3348728f91f5a4478abc02f3daa872a44946612076a899ded93ed112d4c57c43' _.fcp.WorkbookFingerprinting.true...creator-license-type='public' _.fcp.WorkbookFingerprinting.true...creator-machine-id='3348728f91f5a4478abc02f3daa872a44946612076a899ded93ed112d4c57c43' _.fcp.WorkbookFingerprinting.true...license-type='public' _.fcp.WorkbookFingerprinting.true...machine-id='3348728f91f5a4478abc02f3daa872a44946612076a899ded93ed112d4c57c43' original-version='18.1' source-build='2026.3.0 (20263.26.1015.1742)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
     <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
     <MapboxVectorStylesAndLayers />
     <MarkAnimation />
     <ObjectModelEncapsulateLegacy />
     <ObjectModelExtractV2 />
     <ObjectModelTableType />
     <SchemaViewerObjectModel />
+    <SetMembershipControl />
     <SheetIdentifierTracking />
     <VConnDownstreamExtractsWithWarnings />
     <WindowsPersistSimpleIdentifiers />
     <_.fcp.WorkbookFingerprinting.true...WorkbookFingerprinting />
+    <WorksheetBackgroundTransparency />
+    <ZoneBackgroundTransparency />
   </document-format-change-manifest>
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
@@ -393,7 +398,18 @@
       <column caption='Transaction ID' datatype='string' name='[TransactionID]' role='dimension' type='nominal' />
       <column caption='Transaction Type' datatype='string' name='[TransactionType]' role='dimension' type='nominal' />
       <column caption='Sheet1' datatype='table' name='[__tableau_internal_object_id__].[Sheet1_D0951437C5434E379DA224604A615E0A]' role='measure' type='quantitative' />
+      <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
       <column-instance column='[PaymentMethod]' derivation='None' name='[none:PaymentMethod:nk]' pivot='key' type='nominal' />
+      <group caption='Action (Age Groups)' hidden='true' name='[Action (Age Groups)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Calculation_1646028568653824]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (City)' hidden='true' name='[Action (City)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[City]' />
+        </groupfilter>
+      </group>
       <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
         <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/mouni/AppData/Local/Temp/TableauTemp/#TableauTemp_1yxy1rt1jgwbtv19hd37u0e9vxwy.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='10/25/2026 05:55:16 PM' username='tableau_internal_user'>
           <relation name='Extract' table='[Extract].[Extract]' type='table' />
@@ -694,6 +710,20 @@
               <bucket>&quot;UPI ID&quot;</bucket>
             </map>
           </encoding>
+          <encoding attr='color' field='[none:City:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Bangalore&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;Mumbai&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Hyderabad&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Delhi&quot;</bucket>
+            </map>
+          </encoding>
         </style-rule>
       </style>
       <semantic-values>
@@ -779,21 +809,39 @@
         </groupfilter>
       </filter>
       <filter class='categorical' column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMode:nk]'>
-        <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
-          <groupfilter function='member' level='[none:PaymentMode:nk]' member='&quot;Instant&quot;' />
-          <groupfilter function='member' level='[none:PaymentMode:nk]' member='&quot;Scheduled&quot;' />
-        </groupfilter>
+        <groupfilter function='level-members' level='[none:PaymentMode:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
       </filter>
       <filter class='categorical' column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Purpose:nk]'>
-        <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
-          <groupfilter function='member' level='[none:Purpose:nk]' member='&quot;Bill Payment&quot;' />
-          <groupfilter function='member' level='[none:Purpose:nk]' member='&quot;Food&quot;' />
-          <groupfilter function='member' level='[none:Purpose:nk]' member='&quot;Others&quot;' />
-          <groupfilter function='member' level='[none:Purpose:nk]' member='&quot;Shopping&quot;' />
-        </groupfilter>
+        <groupfilter function='level-members' level='[none:Purpose:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
       </filter>
     </shared-view>
   </shared-views>
+  <actions>
+    <action caption='Filter 1 (generated)' name='[Action1_21E7907E361C45F493428750C66BCFCB]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard design' type='sheet' worksheet='Column Chart with Filters' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Dashboard design' />
+      </command>
+    </action>
+    <action caption='Filter 2 (generated)' name='[Action2_E800177092F64BD5B9559F7BF229E020]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard design' type='sheet' worksheet='Map Visual' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Dashboard design' />
+      </command>
+    </action>
+    <action caption='Filter 3 (generated)' name='[Action3_5CCE45CA2C4241AAA8136C75BC8420DB]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard design' type='sheet' worksheet='Card Visual' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Dashboard design' />
+      </command>
+    </action>
+  </actions>
   <worksheets>
     <worksheet name='Card Visual'>
       <layout-options>
@@ -813,6 +861,14 @@
             <column caption='Age Groups' datatype='string' name='[Calculation_1646028568653824]' role='dimension' type='nominal'>
               <calculation class='tableau' formula='if [CustomerAge] &lt;= 30 then &quot;Group A&quot;&#13;&#10;elseif [CustomerAge] &lt;= 40 then &quot;Group B&quot;&#13;&#10;else &quot;Group C&quot;&#13;&#10;end' />
             </column>
+            <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal'>
+              <semantic-values semantic-role='[City].[Name]'>
+                <semantic-value key='&quot;Bangalore&quot;' value='&quot;Bengaluru&quot;' />
+                <semantic-value key='&quot;Delhi&quot;' value='&quot;New Delhi&quot;' />
+                <semantic-value key='&quot;Hyderabad&quot;' value='&quot;Hyderabad&quot;' />
+                <semantic-value key='&quot;Mumbai&quot;' value='&quot;Mumbai&quot;' />
+              </semantic-values>
+            </column>
             <column datatype='string' name='[Currency]' role='dimension' type='nominal' />
             <column caption='Customer Age' datatype='integer' name='[CustomerAge]' role='measure' type='quantitative' />
             <column caption='Device Type' datatype='string' name='[DeviceType]' role='dimension' type='nominal' />
@@ -827,18 +883,27 @@
             <column-instance column='[PaymentMode]' derivation='None' name='[none:PaymentMode:nk]' pivot='key' type='nominal' />
             <column-instance column='[Purpose]' derivation='None' name='[none:Purpose:nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[Action (City)]'>
+            <groupfilter function='member' level='[City]' member='&quot;Delhi&quot;' user:ui-action-filter='[Action2_E800177092F64BD5B9559F7BF229E020]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
           <slices>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:BankNameReceived:nk]</column>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Currency:nk]</column>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:DeviceType:nk]</column>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMode:nk]</column>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Purpose:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[Action (City)]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
           <style-rule element='worksheet'>
             <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' scope='cols' value='on' />
+            <format attr='line-pattern-only' scope='cols' value='solid' />
+            <format attr='stroke-size' scope='cols' value='2' />
           </style-rule>
         </style>
         <panes>
@@ -882,7 +947,19 @@
           <datasource-dependencies datasource='federated.1p59bit0pf86ka153uvkd0ibwirg'>
             <column datatype='real' name='[Amount]' role='measure' type='quantitative' />
             <column caption='Bank Name Received' datatype='string' name='[BankNameReceived]' role='dimension' type='nominal' />
+            <column caption='Age Groups' datatype='string' name='[Calculation_1646028568653824]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='if [CustomerAge] &lt;= 30 then &quot;Group A&quot;&#13;&#10;elseif [CustomerAge] &lt;= 40 then &quot;Group B&quot;&#13;&#10;else &quot;Group C&quot;&#13;&#10;end' />
+            </column>
+            <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal'>
+              <semantic-values semantic-role='[City].[Name]'>
+                <semantic-value key='&quot;Bangalore&quot;' value='&quot;Bengaluru&quot;' />
+                <semantic-value key='&quot;Delhi&quot;' value='&quot;New Delhi&quot;' />
+                <semantic-value key='&quot;Hyderabad&quot;' value='&quot;Hyderabad&quot;' />
+                <semantic-value key='&quot;Mumbai&quot;' value='&quot;Mumbai&quot;' />
+              </semantic-values>
+            </column>
             <column datatype='string' name='[Currency]' role='dimension' type='nominal' />
+            <column caption='Customer Age' datatype='integer' name='[CustomerAge]' role='measure' type='quantitative' />
             <column caption='Device Type' datatype='string' name='[DeviceType]' role='dimension' type='nominal' />
             <column caption='Merchant Name' datatype='string' name='[MerchantName]' role='dimension' type='nominal' />
             <column caption='Payment Method' datatype='string' name='[PaymentMethod]' role='dimension' type='nominal' />
@@ -897,12 +974,20 @@
             <column-instance column='[Purpose]' derivation='None' name='[none:Purpose:nk]' pivot='key' type='nominal' />
             <column-instance column='[Amount]' derivation='Sum' name='[sum:Amount:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[Action (Age Groups)]'>
+            <groupfilter function='member' level='[Calculation_1646028568653824]' member='&quot;Group B&quot;' user:ui-action-filter='[Action3_5CCE45CA2C4241AAA8136C75BC8420DB]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[Action (City)]'>
+            <groupfilter function='member' level='[City]' member='&quot;Delhi&quot;' user:ui-action-filter='[Action2_E800177092F64BD5B9559F7BF229E020]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
           <slices>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:BankNameReceived:nk]</column>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Currency:nk]</column>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:DeviceType:nk]</column>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMode:nk]</column>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Purpose:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[Action (City)]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[Action (Age Groups)]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -950,6 +1035,9 @@
           </mapsources>
           <datasource-dependencies datasource='federated.1p59bit0pf86ka153uvkd0ibwirg'>
             <column caption='Bank Name Received' datatype='string' name='[BankNameReceived]' role='dimension' type='nominal' />
+            <column caption='Age Groups' datatype='string' name='[Calculation_1646028568653824]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='if [CustomerAge] &lt;= 30 then &quot;Group A&quot;&#13;&#10;elseif [CustomerAge] &lt;= 40 then &quot;Group B&quot;&#13;&#10;else &quot;Group C&quot;&#13;&#10;end' />
+            </column>
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal'>
               <semantic-values semantic-role='[City].[Name]'>
                 <semantic-value key='&quot;Bangalore&quot;' value='&quot;Bengaluru&quot;' />
@@ -959,6 +1047,7 @@
               </semantic-values>
             </column>
             <column datatype='string' name='[Currency]' role='dimension' type='nominal' />
+            <column caption='Customer Age' datatype='integer' name='[CustomerAge]' role='measure' type='quantitative' />
             <column caption='Device Type' datatype='string' name='[DeviceType]' role='dimension' type='nominal' />
             <column caption='Payment Mode' datatype='string' name='[PaymentMode]' role='dimension' type='nominal' />
             <column datatype='string' name='[Purpose]' role='dimension' type='nominal' />
@@ -969,12 +1058,16 @@
             <column-instance column='[PaymentMode]' derivation='None' name='[none:PaymentMode:nk]' pivot='key' type='nominal' />
             <column-instance column='[Purpose]' derivation='None' name='[none:Purpose:nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[Action (Age Groups)]'>
+            <groupfilter function='member' level='[Calculation_1646028568653824]' member='&quot;Group B&quot;' user:ui-action-filter='[Action3_5CCE45CA2C4241AAA8136C75BC8420DB]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
           <slices>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:BankNameReceived:nk]</column>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Currency:nk]</column>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:DeviceType:nk]</column>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMode:nk]</column>
             <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Purpose:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[Action (Age Groups)]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -1043,6 +1136,175 @@
       <simple-id uuid='{41642E6A-9248-4DAC-9C14-6591B3DB6829}' />
     </worksheet>
   </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard design'>
+      <style />
+      <size maxheight='1060' maxwidth='2000' minheight='560' minwidth='420' sizing-mode='range' />
+      <datasources>
+        <datasource caption='Sheet1 (UPI+Transactions)' name='federated.1p59bit0pf86ka153uvkd0ibwirg' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1p59bit0pf86ka153uvkd0ibwirg'>
+        <column caption='Bank Name Received' datatype='string' name='[BankNameReceived]' role='dimension' type='nominal' />
+        <column datatype='string' name='[Currency]' role='dimension' type='nominal' />
+        <column caption='Device Type' datatype='string' name='[DeviceType]' role='dimension' type='nominal' />
+        <column caption='Payment Mode' datatype='string' name='[PaymentMode]' role='dimension' type='nominal' />
+        <column datatype='string' name='[Purpose]' role='dimension' type='nominal' />
+        <column-instance column='[BankNameReceived]' derivation='None' name='[none:BankNameReceived:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Currency]' derivation='None' name='[none:Currency:nk]' pivot='key' type='nominal' />
+        <column-instance column='[DeviceType]' derivation='None' name='[none:DeviceType:nk]' pivot='key' type='nominal' />
+        <column-instance column='[PaymentMode]' derivation='None' name='[none:PaymentMode:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Purpose]' derivation='None' name='[none:Purpose:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='47239' id='3' name='Map Visual' w='27942' x='75196' y='1175'>
+          <zone-style>
+            <format attr='border-color' value='#444444' />
+            <format attr='border-style' value='solid' />
+            <format attr='border-width' value='1' />
+          </zone-style>
+        </zone>
+        <zone h='47356' id='4' name='Card Visual' w='24321' x='75136' y='49941'>
+          <zone-style>
+            <format attr='border-color' value='#444444' />
+            <format attr='border-style' value='solid' />
+            <format attr='border-width' value='1' />
+          </zone-style>
+        </zone>
+        <zone h='77908' id='5' name='Column Chart with Filters' w='74049' x='664' y='20564'>
+          <zone-style>
+            <format attr='border-color' value='#444444' />
+            <format attr='border-style' value='solid' />
+            <format attr='border-width' value='1' />
+          </zone-style>
+        </zone>
+        <zone h='12456' id='6' mode='checkdropdown' name='Column Chart with Filters' param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Purpose:nk]' type-v2='filter' w='9656' x='2233' y='6345'>
+          <zone-style>
+            <format attr='border-color' value='#444444' />
+            <format attr='border-style' value='solid' />
+            <format attr='border-width' value='1' />
+          </zone-style>
+        </zone>
+        <zone h='12456' id='7' mode='checkdropdown' name='Column Chart with Filters' param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMode:nk]' type-v2='filter' w='9656' x='15450' y='6345'>
+          <zone-style>
+            <format attr='border-color' value='#444444' />
+            <format attr='border-style' value='solid' />
+            <format attr='border-width' value='1' />
+          </zone-style>
+        </zone>
+        <zone h='11751' id='8' mode='checkdropdown' name='Column Chart with Filters' param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:DeviceType:nk]' type-v2='filter' w='9656' x='29753' y='6463'>
+          <zone-style>
+            <format attr='border-color' value='#444444' />
+            <format attr='border-style' value='solid' />
+            <format attr='border-width' value='1' />
+          </zone-style>
+        </zone>
+        <zone h='11046' id='9' mode='checkdropdown' name='Column Chart with Filters' param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Currency:nk]' type-v2='filter' w='9656' x='44418' y='6345'>
+          <zone-style>
+            <format attr='border-color' value='#444444' />
+            <format attr='border-style' value='solid' />
+            <format attr='border-width' value='1' />
+          </zone-style>
+        </zone>
+        <zone h='10693' id='10' mode='checkdropdown' name='Column Chart with Filters' param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:BankNameReceived:nk]' type-v2='filter' w='9656' x='59747' y='6228'>
+          <zone-style>
+            <format attr='border-color' value='#444444' />
+            <format attr='border-style' value='solid' />
+            <format attr='border-width' value='1' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1200' minheight='1200' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='12' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98120' id='11' param='vert' type-v2='layout-flow' w='99034' x='483' y='940'>
+                <zone fixed-size='280' h='47239' id='3' is-fixed='true' name='Map Visual' w='27942' x='75196' y='1175'>
+                  <zone-style>
+                    <format attr='border-color' value='#444444' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='12456' id='6' mode='checkdropdown' name='Column Chart with Filters' param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Purpose:nk]' type-v2='filter' w='9656' x='2233' y='6345'>
+                  <zone-style>
+                    <format attr='border-color' value='#444444' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='12456' id='7' mode='checkdropdown' name='Column Chart with Filters' param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMode:nk]' type-v2='filter' w='9656' x='15450' y='6345'>
+                  <zone-style>
+                    <format attr='border-color' value='#444444' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='11751' id='8' mode='checkdropdown' name='Column Chart with Filters' param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:DeviceType:nk]' type-v2='filter' w='9656' x='29753' y='6463'>
+                  <zone-style>
+                    <format attr='border-color' value='#444444' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='11046' id='9' mode='checkdropdown' name='Column Chart with Filters' param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Currency:nk]' type-v2='filter' w='9656' x='44418' y='6345'>
+                  <zone-style>
+                    <format attr='border-color' value='#444444' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='10693' id='10' mode='checkdropdown' name='Column Chart with Filters' param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:BankNameReceived:nk]' type-v2='filter' w='9656' x='59747' y='6228'>
+                  <zone-style>
+                    <format attr='border-color' value='#444444' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='77908' id='5' is-fixed='true' name='Column Chart with Filters' w='74049' x='664' y='20564'>
+                  <zone-style>
+                    <format attr='border-color' value='#444444' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='47356' id='4' is-fixed='true' name='Card Visual' w='24321' x='75136' y='49941'>
+                  <zone-style>
+                    <format attr='border-color' value='#444444' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#444444' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{CEDF636C-6502-427D-A0CE-2D6F4F13080F}' />
+    </dashboard>
+  </dashboards>
   <windows saved-dpi-scale-factor='1.25' source-height='37'>
     <window class='worksheet' name='Map Visual'>
       <cards>
@@ -1132,7 +1394,7 @@
       </viewpoint>
       <simple-id uuid='{5404619A-2776-4A5D-AB9F-3095229EB85D}' />
     </window>
-    <window class='worksheet' maximized='true' name='Column Chart with Filters'>
+    <window class='worksheet' name='Column Chart with Filters'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -1179,6 +1441,69 @@
         </highlight>
       </viewpoint>
       <simple-id uuid='{2FA6251F-B22C-48BC-9D4C-DDAA2312F739}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Dashboard design'>
+      <viewpoints>
+        <viewpoint name='Card Visual'>
+          <zoom type='entire-view' />
+          <selection-collection>
+            <tuple-selection>
+              <tuple-reference>
+                <tuple-descriptor>
+                  <pane-descriptor>
+                    <x-fields>
+                      <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Calculation_1646028568653824:nk]</field>
+                    </x-fields>
+                    <y-fields />
+                  </pane-descriptor>
+                  <columns>
+                    <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[cnt:TransactionID:qk]</field>
+                    <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Calculation_1646028568653824:nk]</field>
+                  </columns>
+                </tuple-descriptor>
+                <tuple>
+                  <value>1000</value>
+                  <value>&quot;Group B&quot;</value>
+                </tuple>
+              </tuple-reference>
+            </tuple-selection>
+          </selection-collection>
+        </viewpoint>
+        <viewpoint name='Column Chart with Filters'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Map Visual'>
+          <zoom type='entire-view' />
+          <selection-collection>
+            <tuple-selection>
+              <tuple-reference>
+                <tuple-descriptor>
+                  <pane-descriptor>
+                    <x-fields>
+                      <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[Longitude (generated)]</field>
+                    </x-fields>
+                    <y-fields>
+                      <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[Latitude (generated)]</field>
+                    </y-fields>
+                  </pane-descriptor>
+                  <columns>
+                    <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:City:nk]</field>
+                    <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[Latitude (generated)]</field>
+                    <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[Longitude (generated)]</field>
+                  </columns>
+                </tuple-descriptor>
+                <tuple>
+                  <value>&quot;Delhi&quot;</value>
+                  <value>28.7</value>
+                  <value>77.2</value>
+                </tuple>
+              </tuple-reference>
+            </tuple-selection>
+          </selection-collection>
+        </viewpoint>
+      </viewpoints>
+      <active id='4' />
+      <simple-id uuid='{4ACAF2E0-A893-463C-A354-0D191F5E2E56}' />
     </window>
   </windows>
   <thumbnails>
@@ -1315,6 +1640,148 @@
       d197vN5Hvlfu1r0kBxM4nQ48gQC6Q2NlZZV4cohEPE4y7Mcwodc3icXjDAQC+H0ByoUtgtEI
       zkNe6zscTkKRGFPHJqlVdwgHdFbXt4nE47idDnyBMP1Oha1SfX///X9+rSUGeuvZHgAAAABJ
       RU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='Dashboard design' width='192'>
+      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
+      nJ6Nin0AAAAASUVORK5CYII=
     </thumbnail>
     <thumbnail height='192' name='Map Visual' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
