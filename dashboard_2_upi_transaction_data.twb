@@ -3,16 +3,13 @@
 <!-- build 20263.26.1015.1742                               -->
 <workbook _.fcp.WorkbookFingerprinting.true...author-id='3348728f91f5a4478abc02f3daa872a44946612076a899ded93ed112d4c57c43' _.fcp.WorkbookFingerprinting.true...creator-author-id='3348728f91f5a4478abc02f3daa872a44946612076a899ded93ed112d4c57c43' _.fcp.WorkbookFingerprinting.true...creator-license-type='public' _.fcp.WorkbookFingerprinting.true...creator-machine-id='3348728f91f5a4478abc02f3daa872a44946612076a899ded93ed112d4c57c43' _.fcp.WorkbookFingerprinting.true...license-type='public' _.fcp.WorkbookFingerprinting.true...machine-id='3348728f91f5a4478abc02f3daa872a44946612076a899ded93ed112d4c57c43' original-version='18.1' source-build='2026.3.0 (20263.26.1015.1742)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
-    <AccessibleZoneTabOrder />
     <AnimationOnByDefault />
-    <AutoCreateAndUpdateDSDPhoneLayouts />
     <MapboxVectorStylesAndLayers />
     <MarkAnimation />
     <ObjectModelEncapsulateLegacy />
     <ObjectModelExtractV2 />
     <ObjectModelTableType />
     <SchemaViewerObjectModel />
-    <SetMembershipControl />
     <SheetIdentifierTracking />
     <VConnDownstreamExtractsWithWarnings />
     <WindowsPersistSimpleIdentifiers />
@@ -396,6 +393,7 @@
       <column caption='Transaction ID' datatype='string' name='[TransactionID]' role='dimension' type='nominal' />
       <column caption='Transaction Type' datatype='string' name='[TransactionType]' role='dimension' type='nominal' />
       <column caption='Sheet1' datatype='table' name='[__tableau_internal_object_id__].[Sheet1_D0951437C5434E379DA224604A615E0A]' role='measure' type='quantitative' />
+      <column-instance column='[PaymentMethod]' derivation='None' name='[none:PaymentMethod:nk]' pivot='key' type='nominal' />
       <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
         <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/mouni/AppData/Local/Temp/TableauTemp/#TableauTemp_1yxy1rt1jgwbtv19hd37u0e9vxwy.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='10/25/2026 05:55:16 PM' username='tableau_internal_user'>
           <relation name='Extract' table='[Extract].[Extract]' type='table' />
@@ -683,6 +681,21 @@
         </connection>
       </extract>
       <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:PaymentMethod:nk]' type='palette'>
+            <map to='#59a14f'>
+              <bucket>&quot;Phone Number&quot;</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>&quot;QR Code&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;UPI ID&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
       </semantic-values>
@@ -725,6 +738,62 @@
   <mapsources>
     <mapsource name='Tableau' />
   </mapsources>
+  <shared-views>
+    <shared-view name='federated.1p59bit0pf86ka153uvkd0ibwirg'>
+      <datasources>
+        <datasource caption='Sheet1 (UPI+Transactions)' name='federated.1p59bit0pf86ka153uvkd0ibwirg' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1p59bit0pf86ka153uvkd0ibwirg'>
+        <column caption='Bank Name Received' datatype='string' name='[BankNameReceived]' role='dimension' type='nominal' />
+        <column datatype='string' name='[Currency]' role='dimension' type='nominal' />
+        <column caption='Device Type' datatype='string' name='[DeviceType]' role='dimension' type='nominal' />
+        <column caption='Payment Mode' datatype='string' name='[PaymentMode]' role='dimension' type='nominal' />
+        <column datatype='string' name='[Purpose]' role='dimension' type='nominal' />
+        <column-instance column='[BankNameReceived]' derivation='None' name='[none:BankNameReceived:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Currency]' derivation='None' name='[none:Currency:nk]' pivot='key' type='nominal' />
+        <column-instance column='[DeviceType]' derivation='None' name='[none:DeviceType:nk]' pivot='key' type='nominal' />
+        <column-instance column='[PaymentMode]' derivation='None' name='[none:PaymentMode:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Purpose]' derivation='None' name='[none:Purpose:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <filter class='categorical' column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:BankNameReceived:nk]'>
+        <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+          <groupfilter function='member' level='[none:BankNameReceived:nk]' member='&quot;Axis Bank&quot;' />
+          <groupfilter function='member' level='[none:BankNameReceived:nk]' member='&quot;HDFC Bank&quot;' />
+          <groupfilter function='member' level='[none:BankNameReceived:nk]' member='&quot;ICICI Bank&quot;' />
+          <groupfilter function='member' level='[none:BankNameReceived:nk]' member='&quot;SBI Bank&quot;' />
+        </groupfilter>
+      </filter>
+      <filter class='categorical' column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Currency:nk]'>
+        <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+          <groupfilter function='member' level='[none:Currency:nk]' member='&quot;EUR&quot;' />
+          <groupfilter function='member' level='[none:Currency:nk]' member='&quot;GBP&quot;' />
+          <groupfilter function='member' level='[none:Currency:nk]' member='&quot;INR&quot;' />
+          <groupfilter function='member' level='[none:Currency:nk]' member='&quot;USD&quot;' />
+        </groupfilter>
+      </filter>
+      <filter class='categorical' column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:DeviceType:nk]'>
+        <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+          <groupfilter function='member' level='[none:DeviceType:nk]' member='&quot;Laptop&quot;' />
+          <groupfilter function='member' level='[none:DeviceType:nk]' member='&quot;Mobile&quot;' />
+          <groupfilter function='member' level='[none:DeviceType:nk]' member='&quot;Tablet&quot;' />
+        </groupfilter>
+      </filter>
+      <filter class='categorical' column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMode:nk]'>
+        <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+          <groupfilter function='member' level='[none:PaymentMode:nk]' member='&quot;Instant&quot;' />
+          <groupfilter function='member' level='[none:PaymentMode:nk]' member='&quot;Scheduled&quot;' />
+        </groupfilter>
+      </filter>
+      <filter class='categorical' column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Purpose:nk]'>
+        <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+          <groupfilter function='member' level='[none:Purpose:nk]' member='&quot;Bill Payment&quot;' />
+          <groupfilter function='member' level='[none:Purpose:nk]' member='&quot;Food&quot;' />
+          <groupfilter function='member' level='[none:Purpose:nk]' member='&quot;Others&quot;' />
+          <groupfilter function='member' level='[none:Purpose:nk]' member='&quot;Shopping&quot;' />
+        </groupfilter>
+      </filter>
+    </shared-view>
+  </shared-views>
   <worksheets>
     <worksheet name='Card Visual'>
       <layout-options>
@@ -740,14 +809,31 @@
             <datasource caption='Sheet1 (UPI+Transactions)' name='federated.1p59bit0pf86ka153uvkd0ibwirg' />
           </datasources>
           <datasource-dependencies datasource='federated.1p59bit0pf86ka153uvkd0ibwirg'>
+            <column caption='Bank Name Received' datatype='string' name='[BankNameReceived]' role='dimension' type='nominal' />
             <column caption='Age Groups' datatype='string' name='[Calculation_1646028568653824]' role='dimension' type='nominal'>
               <calculation class='tableau' formula='if [CustomerAge] &lt;= 30 then &quot;Group A&quot;&#13;&#10;elseif [CustomerAge] &lt;= 40 then &quot;Group B&quot;&#13;&#10;else &quot;Group C&quot;&#13;&#10;end' />
             </column>
+            <column datatype='string' name='[Currency]' role='dimension' type='nominal' />
             <column caption='Customer Age' datatype='integer' name='[CustomerAge]' role='measure' type='quantitative' />
+            <column caption='Device Type' datatype='string' name='[DeviceType]' role='dimension' type='nominal' />
+            <column caption='Payment Mode' datatype='string' name='[PaymentMode]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Purpose]' role='dimension' type='nominal' />
             <column caption='Transaction ID' datatype='string' name='[TransactionID]' role='dimension' type='nominal' />
             <column-instance column='[TransactionID]' derivation='Count' name='[cnt:TransactionID:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[BankNameReceived]' derivation='None' name='[none:BankNameReceived:nk]' pivot='key' type='nominal' />
             <column-instance column='[Calculation_1646028568653824]' derivation='None' name='[none:Calculation_1646028568653824:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Currency]' derivation='None' name='[none:Currency:nk]' pivot='key' type='nominal' />
+            <column-instance column='[DeviceType]' derivation='None' name='[none:DeviceType:nk]' pivot='key' type='nominal' />
+            <column-instance column='[PaymentMode]' derivation='None' name='[none:PaymentMode:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Purpose]' derivation='None' name='[none:Purpose:nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
+          <slices>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:BankNameReceived:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Currency:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:DeviceType:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMode:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Purpose:nk]</column>
+          </slices>
           <aggregation value='true' />
         </view>
         <style>
@@ -780,6 +866,79 @@
       </table>
       <simple-id uuid='{D7218EA7-1F51-43BE-9060-341BA23F74AD}' />
     </worksheet>
+    <worksheet name='Column Chart with Filters'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontsize='20' italic='true'>Total Transactions by Payment Method &amp; Merchants</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet1 (UPI+Transactions)' name='federated.1p59bit0pf86ka153uvkd0ibwirg' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1p59bit0pf86ka153uvkd0ibwirg'>
+            <column datatype='real' name='[Amount]' role='measure' type='quantitative' />
+            <column caption='Bank Name Received' datatype='string' name='[BankNameReceived]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Currency]' role='dimension' type='nominal' />
+            <column caption='Device Type' datatype='string' name='[DeviceType]' role='dimension' type='nominal' />
+            <column caption='Merchant Name' datatype='string' name='[MerchantName]' role='dimension' type='nominal' />
+            <column caption='Payment Method' datatype='string' name='[PaymentMethod]' role='dimension' type='nominal' />
+            <column caption='Payment Mode' datatype='string' name='[PaymentMode]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Purpose]' role='dimension' type='nominal' />
+            <column-instance column='[BankNameReceived]' derivation='None' name='[none:BankNameReceived:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Currency]' derivation='None' name='[none:Currency:nk]' pivot='key' type='nominal' />
+            <column-instance column='[DeviceType]' derivation='None' name='[none:DeviceType:nk]' pivot='key' type='nominal' />
+            <column-instance column='[MerchantName]' derivation='None' name='[none:MerchantName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[PaymentMethod]' derivation='None' name='[none:PaymentMethod:nk]' pivot='key' type='nominal' />
+            <column-instance column='[PaymentMode]' derivation='None' name='[none:PaymentMode:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Purpose]' derivation='None' name='[none:Purpose:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Amount]' derivation='Sum' name='[sum:Amount:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:BankNameReceived:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Currency:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:DeviceType:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMode:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Purpose:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.1p59bit0pf86ka153uvkd0ibwirg].[sum:Amount:qk]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' value='0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMethod:nk]' />
+              <text column='[federated.1p59bit0pf86ka153uvkd0ibwirg].[sum:Amount:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.53773480653762817' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1p59bit0pf86ka153uvkd0ibwirg].[sum:Amount:qk]</rows>
+        <cols>([federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMethod:nk] / [federated.1p59bit0pf86ka153uvkd0ibwirg].[none:MerchantName:nk])</cols>
+      </table>
+      <simple-id uuid='{9B6B0EC0-6190-419E-A722-994C619C90AD}' />
+    </worksheet>
     <worksheet name='Map Visual'>
       <table>
         <view>
@@ -790,6 +949,7 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1p59bit0pf86ka153uvkd0ibwirg'>
+            <column caption='Bank Name Received' datatype='string' name='[BankNameReceived]' role='dimension' type='nominal' />
             <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal'>
               <semantic-values semantic-role='[City].[Name]'>
                 <semantic-value key='&quot;Bangalore&quot;' value='&quot;Bengaluru&quot;' />
@@ -798,8 +958,24 @@
                 <semantic-value key='&quot;Mumbai&quot;' value='&quot;Mumbai&quot;' />
               </semantic-values>
             </column>
+            <column datatype='string' name='[Currency]' role='dimension' type='nominal' />
+            <column caption='Device Type' datatype='string' name='[DeviceType]' role='dimension' type='nominal' />
+            <column caption='Payment Mode' datatype='string' name='[PaymentMode]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Purpose]' role='dimension' type='nominal' />
+            <column-instance column='[BankNameReceived]' derivation='None' name='[none:BankNameReceived:nk]' pivot='key' type='nominal' />
             <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Currency]' derivation='None' name='[none:Currency:nk]' pivot='key' type='nominal' />
+            <column-instance column='[DeviceType]' derivation='None' name='[none:DeviceType:nk]' pivot='key' type='nominal' />
+            <column-instance column='[PaymentMode]' derivation='None' name='[none:PaymentMode:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Purpose]' derivation='None' name='[none:Purpose:nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
+          <slices>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:BankNameReceived:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Currency:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:DeviceType:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMode:nk]</column>
+            <column>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Purpose:nk]</column>
+          </slices>
           <aggregation value='true' />
         </view>
         <style>
@@ -867,30 +1043,6 @@
       <simple-id uuid='{41642E6A-9248-4DAC-9C14-6591B3DB6829}' />
     </worksheet>
   </worksheets>
-  <dashboards>
-    <dashboard enable-sort-zone-taborder='true' name='Dashboard 1'>
-      <style />
-      <size maxheight='860' maxwidth='650' minheight='560' minwidth='420' />
-      <zones />
-      <devicelayouts>
-        <devicelayout auto-generated='true' name='Phone'>
-          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
-          <zones>
-            <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98122' id='3' param='vert' type-v2='layout-flow' w='97538' x='1231' y='939' />
-              <zone-style>
-                <format attr='border-color' value='#444444' />
-                <format attr='border-style' value='none' />
-                <format attr='border-width' value='0' />
-                <format attr='margin' value='8' />
-              </zone-style>
-            </zone>
-          </zones>
-        </devicelayout>
-      </devicelayouts>
-      <simple-id uuid='{615F5459-98D1-4758-8C5B-70EC1FD06A09}' />
-    </dashboard>
-  </dashboards>
   <windows saved-dpi-scale-factor='1.25' source-height='37'>
     <window class='worksheet' name='Map Visual'>
       <cards>
@@ -980,10 +1132,53 @@
       </viewpoint>
       <simple-id uuid='{5404619A-2776-4A5D-AB9F-3095229EB85D}' />
     </window>
-    <window class='dashboard' maximized='true' name='Dashboard 1'>
-      <viewpoints />
-      <active id='-1' />
-      <simple-id uuid='{EC452A7C-0A48-4999-842B-7E4878EC529D}' />
+    <window class='worksheet' maximized='true' name='Column Chart with Filters'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Purpose:nk]' type='filter' />
+            <card param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMode:nk]' type='filter' />
+            <card param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:DeviceType:nk]' type='filter' />
+            <card param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Currency:nk]' type='filter' />
+            <card param='[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:BankNameReceived:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[cnt:MerchantName:qk]</field>
+            <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[cnt:PaymentMethod:qk]</field>
+            <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:BankNameReceived:nk]</field>
+            <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Currency:nk]</field>
+            <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:DeviceType:nk]</field>
+            <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:MerchantName:nk]</field>
+            <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMethod:nk]</field>
+            <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:PaymentMode:nk]</field>
+            <field>[federated.1p59bit0pf86ka153uvkd0ibwirg].[none:Purpose:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{2FA6251F-B22C-48BC-9D4C-DDAA2312F739}' />
     </window>
   </windows>
   <thumbnails>
@@ -1012,19 +1207,114 @@
       CM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBCMwCh/QPZi/J/vGT9nwAAAABJRU5ErkJg
       gg==
     </thumbnail>
-    <thumbnail height='192' name='Dashboard 1' width='192'>
+    <thumbnail height='192' name='Column Chart with Filters' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
-      AAACF0lEQVR4nO3TMQEAIAzAMIZ/z0MGRxMFfTq7uweCZmbu7wj4yQCkGYA0A5BmANIMQJoB
-      SDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0
-      A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMA
-      aQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5Bm
-      ANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYg
-      zQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIM
-      QJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCk
-      GYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoB
-      SDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0
-      A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSHtb
-      egWA0FAUAAAAAABJRU5ErkJggg==
+      AAAWFUlEQVR4nO3c628c573Y8e/sZfbKvXN3eVlSFEWJZChLspJjwDHsCIkjpwkaIP0Dkr4p
+      UPQAB+fFAQ4KFHDbV22BomjRV31x0BdBAKN90wD1JXJtn6qSLVM0Y0vUxRJXvC3JvXLvO7s7
+      M31BkL5SF0aRrPP8Pm+s5Qz3mdt3dna8XM22bRshFOV42gsgxNO0H0Cj0XiayyHEU7EfgGma
+      T3M5xHfURvY2lz78mGan98i/a1smtfruibVWzJFdz9Nt11i6ld2fp9tu0O6aZO9lv/U5ctnP
+      afS/uEov1nd2/7u5wnp+h06tyK3l9QOXIZv99ucFaDfruB5pjYRy/ri4wNHj0/yfD/4ev9Yn
+      mBhBd9pEfE5q9TarG6s4dB/x1DjO1jYtLUDCb7OyliM9kuGddz/gn/3zv2T75gL/N+fhlWMe
+      LvxxC4dRZCXfxN1YYU2bIGRucOPTRWa//0NuLV4hNjyJp1fm4gf/j1/+i78h6IJ+M095rUJi
+      NsLSjWsUmm5GQw5u5xt0SqvkmzZTo1Fufb5JMhWgYfoo3Pkjny5+ygsv/oDPFhcZOnaS/Od/
+      pGZ5cO9k5T2AuD+za7C8ts3ssQxddG7f+ZyN5dss3spS2y5w+swk4cwxKutZLn80z9qdZe5u
+      lzg7O0rN0JmdmyMW1EFzEPW5+LxkMBz2cPnSZWrFdVy+KKfOnMHjD/P96SEuffD3xI9/n/Xs
+      De5sFDgzO7W/LNc/u8Xg0WO7DxxuAq4+O30XAZfN5csfsnl3mc+zn3Ps9BlWVgu89INT+MNJ
+      jg16uZsr4PAEubn0CV28OIw6qZExeQUQ9zdxYo7jJ89Cc5PPbvTIjI5yPGxwpRQiHXUQCERI
+      OXUi40cYCDoxnWHCsQC+gQGGHV46pbuUm10iqQx/MRpmvVTDG++jZxLkG32mjmW4emORkZEM
+      3lCAUz9IsXrrKumxKez6JtuFOtNOsG2TnY7Ncx4nAOn0CEEPbLT8DEYjZJIR6m0nQ5kYqViY
+      xkiMi1cWGc2MEvFqmEafWt8kkxkj4NLpd2OMDA6g7d0GrVarhMPhp7qxxeH1ej3cbvcTGMlm
+      6dNFJmZO4XM/uQsIq9dmdavCkczwY33eZzcA28YGNE17TE9nP7bnehqeuf33GDyOffbMXQIt
+      37kFOPC4oeWMMZYM4XJAt2/h1d0YRgen7gWzh4UDj+7m5qcLxMenqZe3OTI+jgbYQNcw0BwO
+      LBu2tnKkkil8Ph9Gp41L9+LAxrSsJ3RmVZvVN7h+7Qa2w8HE1BjLNzZw+tx8b+Y4O/kNcsU6
+      w5kxfG4HuseD2euyvLLG1OQEHaOHz+vlMC08cwF02i2cbi8O26LcLtKuFtDp4XQAlo4Z9KIZ
+      XYx2A3Ax89xJ3MEwpdwaJharayskgy6KTZPtWp9erUAgMIDH46CYz9Fu9TDQcDpdGNUCo8dm
+      ScbUOrM+Dd16gYGR46TcTbbLZVrNDn7dgQ3kKw1mZ6cxm0Vu3C3h8bjpd1q0ehbLt29hWSbh
+      kUlSYf8jj/vM3QXS/SGOTR1nfDhJIjlEwKdjaxper47ZsxkaHcXtsKjXajhcOrsnBY2RwQFy
+      xRrdTptSuYJlmsSSw0SjISJBPzgceD06Zr9HrVbH4/ERiafk4H9CXL4Bqtvr5Lbz+P0BEoMJ
+      nBqYpoXPBeu5LRqNFh6vF6vfxdacuF1O2q0Gnb6Fx3W4c/kz9x5g/82eZdKzNbBMbKtP2+gT
+      9PvQnE7Mfp9+z6Dbh1AoSL/Xw+1y0ep0cGLT6fYIBPzYmhOsPhoaptmn1ekRCQ/QqFdxur24
+      Xc5n5vLnWdl/B7NpNRoUiwWiqRF8bhfYJjjdODWbnUoFfzBM12ji9Q/QbTUwNScBj5tao0Uo
+      HMbpePRroP0A8vk8Ho/nsa+WeDJarRZ+/6NfAqhu/3XD4/E842cQIfvv0T1z7wGEeJwkAKE0
+      CUAoTQIQSpMAhNIkAKE0CUAoTQIQSpMAnhDbtikUCnQ6HWD3SwguXbpEu93Gtm3u3r1Lt9vl
+      ww8/3P/77Fwux7Vr1zAMg/n5eSqVCtlslmvXrvFd+zYb27aZn59nfX3373PL5TLvvfcet27d
+      wjRN3n77bXq9Hm+++eb++t26dYt33nmHarXKxYsXWVpaYmlpiT/84Q80m80nstwSwBPS6/V4
+      9913KZVK+49nZma4fPkyn3zyCR999BGXL19mcnKSy5cvA3Djxg0mJydpt9tMTk5y8eJFQqEQ
+      pVKJarX6NFfnW/n9fsrlMgDRaJR4PE6hUGBxcZFKpUK320XTNCzLAnYDdzgcLCwsUCgU8Pv9
+      5HI5bNve305/bs/cx6Efl3a7ze9+9zt+9atfEYlEyGazLC8vE4vFqFar7OzskEqlKJVKnDp1
+      ikwmw9tvv83g4CC6rrOxsUE8Hmdra4ter8cvf/lLHI6Dzye6rjM3N7f/OBgM8u677+L3+1la
+      WqLRaJBMJkkkEiwtLQEwPj7OO++8w9mzZ1lcXOTFF1+k0+mwvb1937GeBk3TiEajFAoFTNPE
+      tm3S6TRra2sUi0UKhQKWZaHrOrD7LSTdbpeZmRmuXLnC0aNHuX37Nv1+nxMnTlAulxkbG/uz
+      L7fz9ddffx3AMAy8Xu/+hFKpxBtvvMHp06cBWFpaYn5+HrfbzdWrV1ldXWVzc5OrV6+SyWRw
+      u9188MEHXL9+HZfLxdWrVzFNE8MwuHDhAjMzM/ddkL3qvV4vmqZRLpe5du0a6XSaer0OQK1W
+      486dO4RCIdxuN+vr65TLZfx+P/Pz8ySTSe7evUun0yEUCt13PLfbTa/XIxaL4fP58Hq9LC4u
+      Mj4+TiqVolar0evtfhVIpVLh6NGjrK6u7r80G4bB+vo6pmlSKBSYnZ3d37nfptVq8dFHH9Fs
+      NimVSnQ6HTqdDuFwmHPnzqFpGul0mo8//piJiYn9sQzDoN/v02630XWdra0tADKZzFc+vPj1
+      /fekWZbFwsIC9Xqd1dVV/H4/t2/fZnx8nB/+8IekUilcLhfZbBbTNLl58yZjY2Osrq7y4osv
+      ks/nicVixONxcrkcc3Nz992ej8t9Pw799ttvc/78eWD3IHjrrbf4yU9+QrvdJpvNomkaJ06c
+      oFKpMD09Tblc5sMPP+TcuXO8+eabzM7Osrm5iWEYvPbaa/ddkHq9zm9/+1t+85vf4PV6KRaL
+      1Ot1KpUKN27c4KWXXiKbzXL27FkCgQAAFy5cAHYP5snJSa5fv87AwAC1Wo3XXnvtvmfJdrvN
+      73//e6anp0mlUhiGQbvdZnl5mfX1dc6dO0ckEmFlZYWBgQFCoRA7OzvcvXuXU6dO0Ww2KZfL
+      DA8Pc+3aNc6fP4/rIT+TXi6XicVi9102AJ/P91DPB9+tj0NblnXfbW/bNrZtfydexQ7cY91u
+      l0ajQbPZxDRN+v0+p06d4vr161SrVc6dO8fly5dZX18nkUhQr9d56623OH/+PK1WixdeeIGF
+      hQVCoRDLy8v0+/37HiADAwNMT0/vP/Z4PFy8eJGTJ09y9uxZNE1jYmKCS5cuMTk5ydjYGMFg
+      EIfDgW3bXL9+nXg8TrlcZmVlBdM077uBXS4Xr7zyCi6Xi1wux8TEBPV6nR//+Mfs7OzgcDjw
+      er2MjY3hdDppNpukUikGBwcJBoO4XC6mpqYol8u8/PLLD33wA185+I1+h/nVKwfOO52aJR5I
+      PPRz77Ftm+3tbYLBIMFgkG63y8LCAidOnKBQKAC7nx7d3NwkHo+TyWTI5/Pcu3eP559/nna7
+      TbVaxe12s7GxwZkzZx7672+/vt0v/o+/wzT73zrvxHN/wdjMqUdev06nwxtvvMEvfvELYrEY
+      Kysr3L17l2g0yurqKrquc/z4cbLZLOl0mrm5ORYWFigWi8zOzrKwsMDo6OjBAbRaLY4dO0Y+
+      n6dSqRCPx7Ftm+eff5579+5RKpV44YUXKBQK2LZNo9Fgbm6OfD5PNBqlVCrx6quv4vV6OX36
+      9AMPkL0DNxKJYFkWLpeLcDiMYRjcuHGDYDDI8PAX3wiQzWb340yn0/uXCHuXNA/6Qxa3200q
+      lQIgHo8Du9flAMlkcn++vZ99/YydTqcBSCQe/eD8soZR579e/I8HTv/rH/3toQIwTZP5+XlO
+      nDjB1NQUrVaL2dlZ3n//fcLh8P41+t4b1Uwmg2VZhEIh7ty5w71793C73ViWxfDwMOvr62Qy
+      mUOt452FS5j9b/9muUhy+FABeL1evve97+3fUUqn01y9ehVd15mamqJarTI6Osra2tr+5fDp
+      06e5cOECa2tr/OxnP+PixYsHBxCJRIhEIti2zZEjR75S/3PPPfeV+fb+On9oaGj/53sHCDzc
+      59RjsRi//vWvMU2TWq1GJBIBdt9czc7OArtntbm5OWq1Gn6/n+PHj+/Ps7cMf+rtwZVyln/1
+      v//mwOn/8tV/w3Rq9k8a40lwuVzMzMzs33FxuVy8//77nDt3joWFhf1Ludu3b/Pyyy8Du++x
+      CoUCiUSCTqdDoVBgbGyMSCRCq9V6mqvzDYZhkMvl0HUdTdPodrucOXOG69ev02g0ME2T9957
+      j0QiQSQSoVgs0ul02NraIhaLsbS0tHuifdBAX3/ZW1j/mP9+5b8dOP+//Uf/gZD38NeiTqeT
+      aDS6/7jaqXJre+mbM+5+RSQnh07h0/37y/mnfk2GjU3f+vaX673pz4Jut8vNmzdxOp2Uy2Vc
+      Lhder5d8Pk8oFGJqaopgMEgymcThcHD16lW2trYIBoMMDQ1x5MgR7ty5Q6fT4dq1a7zyyitP
+      e5W+QtM0Tp06ha7rrK+vMzExQbfb5ac//Sm1Wg2Xy7V/ZVKv1+l2u/j9fn70ox+RSqXI5/PM
+      zMw8+m1Qo29QaOQPnG7Z1p+0Yl+3VrnHf/rg3x04/d//4//MqP7nv132rNF1nZ///OfA/d8g
+      nzx5kn6/z/T0NGfPnv3GtO8qXdf3b5PuXW3sreOXL0u/fDL9sr3LOWX/P4BKvnzwW6bJ5/MX
+      D5w3NXGcSHLowOnfdTv5Tf7Xf/nXB05/9Td/xdDkF7fkJQDFWGafi//z7w6c/tI/+afPdAC2
+      bdEzOgdO33tPtOfp34gV4imSAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJACh
+      NAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqT
+      AITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlA
+      KE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITS
+      JAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0C
+      EEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJACh
+      NAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqT
+      AITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlA
+      KE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITS
+      JAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0C
+      EEqTAITSJAChNAlAKE0CEEqTAITSJAChNAlAKE0CEEqTAITSXHv/sG2bfr//wF/QLNAdngOn
+      W6b1UM/zsOwHjWc93HI//Hj2fcfjMY9nmQ8aj4caz7IebrubpoXDrR843ebhxnsUTreOrWnf
+      PlHTHu/2tOz7r9/XjnPNtm0boFAo4PP5HtuCPIhlWTgcT+4F6B/6eM1mk0Ag8MTG+4eyPfdf
+      AXRdJxgMPvYBDmLbNtpBZwUZ75GZpin77xBcD54FNlbuEEyMEQ4c/NLyqA5cGavH8vIqvlAE
+      +l18fi/hcGR//nyhQHJw8Bu/1m428QQCB76peZiNVywWMHsGzZZBYmiUbq1Aud4lHPJRKlUY
+      GhmjubNNFy9Hx0cOt35Au15hJZcnkRwiEQ3t/7xVq+D0R/E81F55eJ1agVwNjo5+c7sd1v3W
+      b3N9la7twKc5GEiG6fZchAO7l3kH7T/L7GJ0NXw+9yOPt6dYLGD1ujRaHeLpUfqNIqVah3A4
+      QKlYJj2Sob1ToGPrTB4ZBR4qAIt6s03L3KLlsihVSpiuAJFIBN3uUG1ZpBMDLK9uMpKMUtqp
+      kU4PsrpWwBcIcOLYkQcP8WV2H9PhIRmPcvvmLWxC0O+wUdghFEnQbVXpdvsEdI3NfJlkNEqu
+      XseqVoiPTzKaSnDY80ShkEf3+MgMxbm3XcAy6kxPzwBQKu0Q8vYpmH6OHx065Ai7quUSLt8A
+      sZCHza0i5VKe4VScTqeLz7K5s1lA93hwmh2arS4D0Rgjw3EKxTbD6dgjj5fbrmBYNq26k+V7
+      mxi9Ll5/kLFUlNVcntHMCLmVLAODw9TKRfyhGL1GiWbH5uTpOZyPOF6z0+PIxBE2bt7GG9Fp
+      d5ysZu/g0n24Xeye2IID5DY2iKWGyC3fJRQLUChanDk7g9txuD24t//GhpMs57axe80v9l+x
+      QjRgk897mJ764uT1wIuq9k6BYrXD1vYWRs9ifCRBKJnB7OxQbxjUd3bQNJtEcpidepPjk+OU
+      ilsMxEdxa9ahVqS2U6a8U9v9d61Kt2swemSS5k6FQu4ehuWkWqthdqqUK00yk8eIxwZJJQ9/
+      8O8xmjU+vvoZ6XQS07SwbZvdd0kAGpZpYn/xg0MZHD1CMuTmxucblLfuYXc7LG/XMNt1cvkK
+      40cnMJo79DSdgFsjEvYxf+Uz/KFDXOLYJvntbUpbW5QabdLDGbyBID7dQaVaQ+u0aVs2Ds8A
+      rl6dofEpjFYVh+4jMeDHPMT6dTtNtvMFLBusbpNGq4M/msRlGhjtGmv5Kp16FZdTo1LdwR+M
+      MzKUJJ0eOvTBvz92q86V+U9IDaWxHmL/OV9//fXXAQzDwOv1fuMJO0aPIxMTRIN+PH4/Pr8f
+      t9uLz+Om3+3iDQzQ7TQxjB6pwSgbW0WGR0bx6B58Xv1bn/P+NPzBAeLREA6ng2AwiGk0Wduq
+      MJoZI5FM4cZE02w0t4dEfJBA0IfPZbNVqhEOBQ8dgcPhJByJc+zYBNWdGiG/m9WNPJFYDLfT
+      gT8YodsssV1pEo+GDzkKtGpl1jeLpIZH8OpOhsaPoJk20UiIaDzC5vo6ra7NYMjLxmaRkckp
+      dkoFjmRGOehK4KD9Z/UNgolhjk8M0zZgIOjHo7sJBPxotompufA4LRotg2h8kHJ+k1AsyUBg
+      d197vN5Hvlfu1r0kBxM4nQ48gQC6Q2NlZZV4cohEPE4y7Mcwodc3icXjDAQC+H0ByoUtgtEI
+      zkNe6zscTkKRGFPHJqlVdwgHdFbXt4nE47idDnyBMP1Oha1SfX///X9+rSUGeuvZHgAAAABJ
+      RU5ErkJggg==
     </thumbnail>
     <thumbnail height='192' name='Map Visual' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
