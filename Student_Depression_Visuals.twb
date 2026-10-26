@@ -418,6 +418,71 @@
       </table>
       <simple-id uuid='{4ABCE3C5-036E-4710-8971-F78F83F3B21F}' />
     </worksheet>
+    <worksheet name='SS &amp; SC'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontsize='20' italic='true'>Study Satisfaction (SS) &amp; Student Count(SC)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Depression+Student+Dataset (tableau_project1)' name='federated.096wk0y0j9vjki1bjz5re19yk9zi' />
+          </datasources>
+          <datasource-dependencies datasource='federated.096wk0y0j9vjki1bjz5re19yk9zi'>
+            <column caption='Index column' datatype='integer' name='[Index_column]' role='measure' type='quantitative' />
+            <column caption='Study Satisfaction' datatype='integer' datatype-customized='true' name='[Study_Satisfaction]' role='measure' type='quantitative' />
+            <column-instance column='[Index_column]' derivation='Count' name='[cnt:Index_column:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Study_Satisfaction]' derivation='None' name='[none:Study_Satisfaction:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Index_column]' derivation='Sum' name='[sum:Index_column:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.096wk0y0j9vjki1bjz5re19yk9zi].[sum:Index_column:qk]' scope='rows' value='false' />
+            <format attr='display' class='0' field='[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Study_Satisfaction:qk]' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Study_Satisfaction:qk]' />
+              <text column='[federated.096wk0y0j9vjki1bjz5re19yk9zi].[cnt:Index_column:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run bold='true' fontsize='12' italic='true'><![CDATA[SS: <[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Study_Satisfaction:qk]>]]></run>
+                <run>Æ&#10;</run>
+                <run bold='true' fontsize='12' italic='true'><![CDATA[SC:<[federated.096wk0y0j9vjki1bjz5re19yk9zi].[cnt:Index_column:qk]>]]></run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.9230387210845947' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-color' value='#f17b79' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.096wk0y0j9vjki1bjz5re19yk9zi].[sum:Index_column:qk]</rows>
+        <cols>[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Study_Satisfaction:qk]</cols>
+      </table>
+      <simple-id uuid='{DAB02F47-9E5A-4187-A292-A7E2772B03FA}' />
+    </worksheet>
   </worksheets>
   <windows saved-dpi-scale-factor='1.25' source-height='37'>
     <window class='worksheet' name='AP &amp; SC'>
@@ -446,7 +511,7 @@
       </viewpoint>
       <simple-id uuid='{66DA51D2-3B10-4B53-974B-EA173E4D074C}' />
     </window>
-    <window class='worksheet' maximized='true' name='FS &amp; SC'>
+    <window class='worksheet' name='FS &amp; SC'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -468,6 +533,37 @@
         </edge>
       </cards>
       <simple-id uuid='{ACC2106C-1327-4164-BC1C-1EDCFAF5A2BA}' />
+    </window>
+    <window class='worksheet' maximized='true' name='SS &amp; SC'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Study_Satisfaction:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{D642C7A7-A71F-45EB-926A-A9766B980A5E}' />
     </window>
   </windows>
   <thumbnails>
@@ -555,6 +651,49 @@
       pgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICYpgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICY
       pgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICYpgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICY
       pgDENAUgpv0bGmnqVQw6pqQAAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='192' name='SS &amp; SC' width='192'>
+      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
+      fPo0bXl4ydIITSS/kq7vQk0BCDUFINQUgFBTAEJNAQg1BSDUFIBQUwBCTQEINQUg1BSAUFMA
+      Qk0BCDUFINQUgFBTAEJNAQg1BSDUFIBQUwBCTQEINQUg1BSAUFMAQk0BCDUFINQUgFBTAEJN
+      AQg1BSDUFIBQUwBCTQEINQUg1BSAUFMAQk0BCDUFINQUgFBTAEJNAQg1BSDUFIBQUwBCTQEI
+      NQUg1BSAUFMAQk0BCDUFINQUgFBTAEJNAQg1BSDUFIBQUwBCTQEINQUg1BSAUFMAQk0BCDUF
+      INQUgFBTAEJNAQg1BSDUFIBQUwBCTQEINQUg1BSAUFMAQk0BCDUFINQUgFBTAEJNAQg1BSDU
+      FIBQUwBCTQEINQUg1BSAUFMAQk0BCDUFINQUgFBTAEJNAQg1BSDUFIBQUwBCTQEINQUg1BSA
+      UFMAQk0BCDUFINQUgFBTAEJNAQg1BSDUFIBQUwBCTQEINQUg1BSAUFMAQk0BCDUFINQUgFBT
+      AEJNAQg1BSDUFIBQUwBCTQEINQUg1BSAUFMAQk0BCDUFINQUgFBTAEJNAQg1BSDUFIBQUwBC
+      TQEINQUg1P4LKr9/HOsurpwAAAAASUVORK5CYII=
     </thumbnail>
   </thumbnails>
 </workbook>
