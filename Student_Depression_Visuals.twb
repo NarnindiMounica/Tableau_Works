@@ -1,0 +1,560 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20263.26.1022.1645                               -->
+<workbook _.fcp.WorkbookFingerprinting.true...author-id='f11a07839e8cadc169fae779ea8e5acac29f10eaf440f4c9fb360740db857282' _.fcp.WorkbookFingerprinting.true...creator-author-id='f11a07839e8cadc169fae779ea8e5acac29f10eaf440f4c9fb360740db857282' _.fcp.WorkbookFingerprinting.true...creator-license-type='free' _.fcp.WorkbookFingerprinting.true...creator-machine-id='3348728f91f5a4478abc02f3daa872a44946612076a899ded93ed112d4c57c43' _.fcp.WorkbookFingerprinting.true...license-type='free' _.fcp.WorkbookFingerprinting.true...machine-id='3348728f91f5a4478abc02f3daa872a44946612076a899ded93ed112d4c57c43' original-version='18.1' source-build='2026.3.0 (20263.26.1022.1645)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+    <_.fcp.WorkbookFingerprinting.true...WorkbookFingerprinting />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Depression+Student+Dataset (tableau_project1)' inline='true' name='federated.096wk0y0j9vjki1bjz5re19yk9zi' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='MYOMEN' name='sqlserver.1n53w540rq0vta15eonbc1vs7knr'>
+            <connection application-intent='false' authentication='sspi' class='sqlserver' dbname='tableau_project1' multi-subnet-failover='false' odbc-native-protocol='yes' one-time-sql='' server='MYOMEN' />
+          </named-connection>
+        </named-connections>
+        <relation connection='sqlserver.1n53w540rq0vta15eonbc1vs7knr' name='Depression+Student+Dataset' table='[dbo].[Depression+Student+Dataset]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>Gender</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Gender]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>Gender</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='2147483649' name='LEN_RUS_S2_VWIN' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Age</remote-name>
+            <remote-type>17</remote-type>
+            <local-name>[Age]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>Age</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>3</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TINYINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_UTINYINT&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Academic_Pressure</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Academic_Pressure]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>Academic_Pressure</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Study_Satisfaction</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Study_Satisfaction]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>Study_Satisfaction</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sleep_Duration</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Sleep_Duration]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>Sleep_Duration</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='2147483649' name='LEN_RUS_S2_VWIN' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Dietary_Habits</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Dietary_Habits]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>Dietary_Habits</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='2147483649' name='LEN_RUS_S2_VWIN' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Have_you_ever_had_suicidal_thoughts</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[Have_you_ever_had_suicidal_thoughts]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>Have_you_ever_had_suicidal_thoughts</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_BIT&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Study_Hours</remote-name>
+            <remote-type>17</remote-type>
+            <local-name>[Study_Hours]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>Study_Hours</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>3</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TINYINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_UTINYINT&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Financial_Stress</remote-name>
+            <remote-type>17</remote-type>
+            <local-name>[Financial_Stress]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>Financial_Stress</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>3</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TINYINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_UTINYINT&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Family_History_of_Mental_Illness</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[Family_History_of_Mental_Illness]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>Family_History_of_Mental_Illness</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_BIT&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Depression</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Depression]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>Depression</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='2147483649' name='LEN_RUS_S2_VWIN' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>age_group</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[age_group]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>age_group</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='2147483649' name='LEN_RUS_S2_VWIN' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Index_column</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[Index_column]</local-name>
+            <parent-name>[Depression+Student+Dataset]</parent-name>
+            <remote-alias>Index_column</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>5</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_SMALLINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SSHORT&quot;</attribute>
+            </attributes>
+            <object-id>[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Academic Pressure' datatype='integer' datatype-customized='true' name='[Academic_Pressure]' role='measure' type='quantitative' />
+      <column caption='Dietary Habits' datatype='string' name='[Dietary_Habits]' role='dimension' type='nominal' />
+      <column caption='Family History of Mental Illness' datatype='boolean' name='[Family_History_of_Mental_Illness]' role='dimension' type='nominal' />
+      <column caption='Financial Stress' datatype='integer' name='[Financial_Stress]' role='measure' type='quantitative' />
+      <column caption='Have you ever had suicidal thoughts' datatype='boolean' name='[Have_you_ever_had_suicidal_thoughts]' role='dimension' type='nominal' />
+      <column caption='Index column' datatype='integer' name='[Index_column]' role='measure' type='quantitative' />
+      <column caption='Sleep Duration' datatype='string' name='[Sleep_Duration]' role='dimension' type='nominal' />
+      <column caption='Study Hours' datatype='integer' name='[Study_Hours]' role='measure' type='quantitative' />
+      <column caption='Study Satisfaction' datatype='integer' datatype-customized='true' name='[Study_Satisfaction]' role='measure' type='quantitative' />
+      <column caption='Depression+Student+Dataset' datatype='table' name='[__tableau_internal_object_id__].[Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D]' role='measure' type='quantitative' />
+      <column caption='Age Group' datatype='string' name='[age_group]' role='dimension' type='nominal' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='Depression+Student+Dataset' id='Depression+Student+Dataset_9B7AB1676EE24DB98CDABCA95945C40D'>
+            <properties context=''>
+              <relation connection='sqlserver.1n53w540rq0vta15eonbc1vs7knr' name='Depression+Student+Dataset' table='[dbo].[Depression+Student+Dataset]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='AP &amp; SC'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontsize='20' italic='true'>Academic Pressure(AP) &amp; Student Count(SC)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Depression+Student+Dataset (tableau_project1)' name='federated.096wk0y0j9vjki1bjz5re19yk9zi' />
+          </datasources>
+          <datasource-dependencies datasource='federated.096wk0y0j9vjki1bjz5re19yk9zi'>
+            <column caption='Academic Pressure' datatype='integer' datatype-customized='true' name='[Academic_Pressure]' role='measure' type='quantitative' />
+            <column caption='Index column' datatype='integer' name='[Index_column]' role='measure' type='quantitative' />
+            <column-instance column='[Index_column]' derivation='Count' name='[cnt:Index_column:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Academic_Pressure]' derivation='None' name='[none:Academic_Pressure:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.096wk0y0j9vjki1bjz5re19yk9zi].[cnt:Index_column:qk]' scope='rows' value='false' />
+            <format attr='display' class='0' field='[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Academic_Pressure:qk]' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.096wk0y0j9vjki1bjz5re19yk9zi].[cnt:Index_column:qk]' />
+              <text column='[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Academic_Pressure:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run bold='true' fontsize='12' italic='true'><![CDATA[IC: <[federated.096wk0y0j9vjki1bjz5re19yk9zi].[cnt:Index_column:qk]>]]></run>
+                <run>Æ&#10;</run>
+                <run bold='true' fontsize='12' italic='true'><![CDATA[AP: <[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Academic_Pressure:qk]>]]></run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='3.3922650814056396' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-color' value='#c290b4' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.096wk0y0j9vjki1bjz5re19yk9zi].[cnt:Index_column:qk]</rows>
+        <cols>[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Academic_Pressure:qk]</cols>
+      </table>
+      <simple-id uuid='{11783A38-6A9F-4D0C-9599-513553A97410}' />
+    </worksheet>
+    <worksheet name='FS &amp; SC'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontsize='20' italic='true'>Financial Stress(FS) &amp; Student Count(SC)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Depression+Student+Dataset (tableau_project1)' name='federated.096wk0y0j9vjki1bjz5re19yk9zi' />
+          </datasources>
+          <datasource-dependencies datasource='federated.096wk0y0j9vjki1bjz5re19yk9zi'>
+            <column caption='Financial Stress' datatype='integer' name='[Financial_Stress]' role='measure' type='quantitative' />
+            <column caption='Index column' datatype='integer' name='[Index_column]' role='measure' type='quantitative' />
+            <column-instance column='[Index_column]' derivation='Count' name='[cnt:Index_column:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Financial_Stress]' derivation='None' name='[none:Financial_Stress:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Index_column]' derivation='Sum' name='[sum:Index_column:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Financial_Stress:qk]' scope='cols' value='false' />
+            <format attr='display' class='0' field='[federated.096wk0y0j9vjki1bjz5re19yk9zi].[sum:Index_column:qk]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Financial_Stress:qk]' />
+              <text column='[federated.096wk0y0j9vjki1bjz5re19yk9zi].[cnt:Index_column:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run bold='true' fontsize='12'><![CDATA[FS: <[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Financial_Stress:qk]>]]></run>
+                <run>Æ&#10;</run>
+                <run bold='true' fontsize='12'><![CDATA[IC: <[federated.096wk0y0j9vjki1bjz5re19yk9zi].[cnt:Index_column:qk]>]]></run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='2.8176796436309814' />
+                <format attr='mark-color' value='#8cd17d' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.096wk0y0j9vjki1bjz5re19yk9zi].[sum:Index_column:qk]</rows>
+        <cols>[federated.096wk0y0j9vjki1bjz5re19yk9zi].[none:Financial_Stress:qk]</cols>
+      </table>
+      <simple-id uuid='{4ABCE3C5-036E-4710-8971-F78F83F3B21F}' />
+    </worksheet>
+  </worksheets>
+  <windows saved-dpi-scale-factor='1.25' source-height='37'>
+    <window class='worksheet' name='AP &amp; SC'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{66DA51D2-3B10-4B53-974B-EA173E4D074C}' />
+    </window>
+    <window class='worksheet' maximized='true' name='FS &amp; SC'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{ACC2106C-1327-4164-BC1C-1EDCFAF5A2BA}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='AP &amp; SC' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
+      AAAHXUlEQVR4nO3cS0jVfR7H8Y9azRyekawImszGWyUMKZgQBgXWBC2CKGhRiycKalEEtZDA
+      TaYELoouGEYoXUhQSlxI0cVWdkEKEXOgJAjS0GPiNW/H4/nPopk2z0zN4tHD4+f9grPyt/hu
+      3v//j9/PcxKCIAgEmEqM9wBAPH0PYHZ2Np5zAHHBGwDWCADWCADWCADWCADWCADWCADWCADW
+      CADWCADWCADWCADWCADWCADWCADWCADWCADWCADWCADWCADWCAB2giBQfX29ZmdntSjewwDz
+      bWJiQh0dHUpJSVHCf34Ya3Z2VklJSfGeDZhzz5490/j4uFpaWtgCwc/z58+1bds29ff38waA
+      n/fv32vDhg3q6ekhAHhjCwRrBABrBABrBABrBABbHz9+JAB4CoJAtbW1HIPCG28AWCMAWCMA
+      WCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWCMAWLP9XaCpkQn1/bP7p+vWbMrUoj8tnoeJEA++
+      AYxNqvv1h5+u+2vu3whgAWMLBGsEAGsEAGsEAGsEAGsEAGsEAGu29wCJixIVSvnlp+sSEhPm
+      YRrECz+LAmtsgWDNLoAgCFRTU6OZmRndvn1bpaWlevny5fe/j4yM6PLlyzp69KgGBgZUW1ur
+      4uJiNTc3x3FqzBW7AL58+aJwOKza2lplZ2fr7NmzSktLU2NjoySppqZG+/btU0FBgR4/fqwg
+      CHTy5El1dnbGeXLMBbsAnj59qqKiInV2dmrLli1KSEhQWlqa9u7dK0latWqVKisr9eTJE+Xn
+      56ulpUVnzpxRUVFRnCfHXLAKIAgCdXZ2Kjc3V+FwWE1NTfrw4YPq6+sVi8U0MTGh5cuXKzMz
+      U8ePH1dfX592796twsJCbdy4Md7jz4mZqYgi49M//ESnZ+I95pyxOgUKgkC9vb1avXq1wuGw
+      enp6lJOTo8HBQa1Zs0aRSEStra1KT0/X2rVr1d7eriAIlJeXp8TEhfms6Lj/SiOfB3+4ZtXf
+      07TuH7nzNNH8sgoAv+UewMJ8rAH/J9sAZmZmNDo6KkmKRqOanp5WLBb7zbpYLKbp6en5Hg/z
+      xDKAWCymyspKnTt3TkEQqKysTBcuXNChQ4cUiUQUjUYlSe3t7Tp48CBHoAuYZQCvXr1Sdna2
+      QqGQJiYmFI1GdfjwYWVkZOjBgwcaHh6WJK1bt06ZmZnKzV2Y+18Y/jPc6OioqqqqtHnzZk1N
+      TamlpUWDg4NqbGxUcXGxkpOTv6/9+vWrVqxYocWL+VL8QmUVQBAEamhoUEVFhZKTk1VdXa23
+      b9/q0qVLCoVCamtrU39/v3bt2qWHDx+qoaFBkjQ0NKRly5bFeXrMBY5BzbkfgxKAubHwsKJT
+      P77pXfKXP+uXFck/XPNHRQCwZnkKBOnTp08aHx/X5OSkmpqa1NbWpn8/CyVJnz9/1v3799Xb
+      2/s/1ywEBGDq+vXrGh0dVWlpqVJTUxUKhfTu3TsFQaDh4WFdu3ZNqampunXrlioqKpSRkaEb
+      N27818vCPzICMDQ8PKwlS5bo3r17OnbsmPLz87V+/Xr19fVJ+nZU3N3drTt37ujIkSMKh8Oq
+      qqrSoUOHFtw2mQAMNTc3a+fOnerq6lJqaqpmZmY0NDSkrVu3KhaL6erVq6qurlYoFNLdu3d1
+      6tQpFRYWLrinv2R2D4BvkpKSVFBQoGg0qvLycu3YsUM9PT06cOCAEhMTlZ6erosXL2r//v2a
+      nJxUXV2dsrKyVFhYGO/Rf3ecAsEaWyBYIwBYIwBjAwMDKikpUSQSUVdXl8rKynT+/HlNTk5+
+      XzM2NqYrV66opKRE/f39cZx2bhCAqVgspps3b37//kN9fb1OnDghSXr9+rVaW1slSZFIRIcP
+      H9bSpUs1Pj4ez5HnBKdAph49eqSUlBT19PQoGo3qxYsXikQiSk9P16ZNm5SQkPD9Uqyurk5F
+      RUXKyMiI99i/O94AhoaGhtTa2qrs7GyNjIyoo6NDR44cUXl5uX799Ve9efNGoVBI3d3dKisr
+      0/bt25WTkxPvsecEbwBDY2NjOn36tJYuXaqVK1cqFAopLy9P0rfj8JSUFEnftkl79uxRX1+f
+      srKy4jnynOEeANbYAsEaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAa
+      AcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAa
+      AcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAa
+      AcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAa
+      AcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAa
+      AcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcDavwCi
+      jJvYZ1z68gAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='FS &amp; SC' width='192'>
+      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
+      +5toNEo6nR79gpAjR46Qz+d54403CIWK52UT3rZt2zYYOf4rphWTJ8tkMixcuJDu7m4OHjxI
+      VVUVp0+fZtasWaRSKd5//30ymQyhUIi6ujo+//xz1q1bR1dXF62trZw8eZK5c+cSi8WCXpX/
+      28DAAIODg5SUlOh9ALHnm2++IRaLcfXqVR0CiU3OOa5du6YAxK5QKKRDILGnubmZkpIS4vG4
+      AhDbdAgkpikAMU0BiGkKQExTAGKaAhDTFICYpgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICY
+      pgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICYpgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICY
+      pgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICYpgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICY
+      pgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICYpgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICY
+      pgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICYpgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICY
+      pgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICYpgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICY
+      pgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICYpgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICY
+      pgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICYpgDENAUgpikAMU0BiGkKQExTAGKaAhDTFICY
+      pgDENAUgpv0bGmnqVQw6pqQAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
